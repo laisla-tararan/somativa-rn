@@ -67,7 +67,7 @@ const filmes = [
 ];
 
 // TODO: adicionar { navigation } como parametro
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [busca, setBusca] = useState('');
   const [filmesFiltrados, setFilmesFiltrados] = useState(filmes);
 
@@ -82,7 +82,7 @@ export default function HomeScreen() {
     return (
       <TouchableOpacity
         style={styles.card}
-        // TODO: onPress={() => navigation.navigate('Detalhe', { ...item })}
+        onPress={() => navigation.navigate('Detalhe', { ...item })}
       >
         <View style={styles.cardIcone}>
           <Text style={styles.cardIconeTexto}>{item.titulo[0]}</Text>

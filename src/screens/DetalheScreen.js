@@ -18,8 +18,8 @@ const filmeMock = {
 };
 
 // TODO: adicionar { route, navigation } como parametros
-export default function DetalheScreen() {
-  // TODO: const { titulo, demais parametros} = route?.params ?? filmeMock;
+export default function DetalheScreen({ route, navigation }) {
+  const { titulo, genero, plataforma, nota, sinopse} = route?.params ?? filmeMock;
 
   const [isSalvo, setIsSalvo] = useState(false);
 
@@ -51,13 +51,18 @@ export default function DetalheScreen() {
         </View>
 
         {/* TODO: ao adicionar o filme, navegar para a aba "Lista" passando os dados do filme */}
-
         <TouchableOpacity
           style={[styles.botao, isSalvo && styles.botaoAtivo]}
           onPress={() => {
             if (!isSalvo) {
-              navigation.navigate("nome da tela", {
-                // novoFilme: {dados do filme},
+              navigation.navigate("Lista", {
+                novoFilme: {
+                  titulo: titulo, 
+                  genero: genero, 
+                  plataforma: plataforma, 
+                  nota: nota, 
+                  sinopse: sinopse
+                },
               });
             }
             setIsSalvo((prev) => !prev);

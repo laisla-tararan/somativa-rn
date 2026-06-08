@@ -20,15 +20,15 @@ const filmesMock = [
 ];
 
 // TODO: adicionar { route } como parametro da funcao
-export default function ListaScreen() {
+export default function ListaScreen({ route }) {
   const [itensSalvos, setItensSalvos] = useState(filmesMock);
 
   // TODO: utilizar useEffect para observar route.params e adicionar o novo filme ao estado da lista
-  // useEffect(() => {
-  //   if (route.params?.novoFilme) {
-  //     setItensSalvos(...);
-  //   }
-  // }, [... colocar a variavel de estado]);
+  useEffect(() => {
+    if (route.params?.novoFilme) {
+      setItensSalvos(novoFilme);
+    }
+  }, [itensSalvos]);
 
   return (
     <SafeAreaView style={styles.container}>
